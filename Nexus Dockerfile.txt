@@ -1,0 +1,17 @@
+FROM ubuntu
+
+MAINTAINER Jordan Bragg
+
+RUN apt-get update
+RUN apt-get install -y wget
+RUN apt-get install -y default-jre
+RUN apt-get install -y default-jdk
+
+WORKDIR /opt/
+
+RUN wget http://download.sonatype.com/nexus/3/latest-unix.tar.gz
+RUN tar zxvf latest-unix.tar.gz
+RUN apt-get update
+RUN chmod a+x /opt/nexus-3.1.0-04/bin/nexus
+EXPOSE 8081
+ENTRYPOINT /opt/nexus-3.1.0-04/bin/nexus start && bash
