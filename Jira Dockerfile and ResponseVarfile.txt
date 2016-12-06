@@ -1,0 +1,41 @@
+-------------------------------------------------------
+Dockerfile
+-------------------------------------------------------
+
+FROM ubuntu
+MAINTAINER Jordan Bragg
+
+
+RUN apt-get update
+RUN apt-get install -y wget
+RUN apt-get install -y git
+RUN apt-get install -y default-jre
+RUN apt-get install -y default-jdk
+
+WORKDIR /opt/
+
+RUN wget https://www.atlassian.com/software/jira/downloads/binary/atlassian-jira-software-7.2.3-x64$
+RUN chmod a+x atlassian-jira-software-7.2.3-x64.bin
+COPY response.varfile /opt/
+RUN /opt/atlassian-jira-software-7.2.3-x64.bin -q -varfile /opt/response.varfile
+EXPOSE 8081
+ENTRYPOINT service jira start && bash
+
+
+
+
+-----------------------------------------------------------------------------
+put this response varfile in the same container (directory) as the Dockerfile
+-----------------------------------------------------------------------------
+
+install4j response file for JIRA 7.2.3
+#Tue Dec 6 10:45:17 CST 2016
+rmiPort$Long=8006
+app.install.service$Boolean=true
+existingInstallationDir=/opt/jira
+sys.confirmedUpdateInstallationString=false
+sys.languageId=en
+sys.installationDir=/opt/atlassian/jira
+executeLauncherAction$Boolean=true
+httpPort$Long=8081
+portChoice=custom
