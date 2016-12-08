@@ -1,0 +1,24 @@
+FROM ubuntu
+MAINTAINER Jordan Bragg
+
+RUN apt-get update
+RUN apt-get install -y wget
+RUN apt-get install -y default-jre
+RUN apt-get install -y default-jdk
+
+WORKDIR /opt/
+
+RUN wget http://mirror.vorboss.net/apache/tomcat/tomcat-9/v9.0.0.M13/bin/apache-tomcat-9.0.0.M13.ta$
+RUN tar zxvf apache-tomcat-9.0.0.M13.tar.gz
+RUN apt-get update
+RUN chmod a+x apache-tomcat-9.0.0.M13
+ENTRYPOINT /opt/apache-tomcat-9.0.0.M13/bin/startup.sh && bash
+
+----------------------------------------------------------------------------------------------------------------------
+
+Using CATALINA_BASE:   /opt/apache-tomcat-9.0.0.M13
+Using CATALINA_HOME:   /opt/apache-tomcat-9.0.0.M13
+Using CATALINA_TMPDIR: /opt/apache-tomcat-9.0.0.M13/temp
+Using JRE_HOME:        /usr
+Using CLASSPATH:       /opt/apache-tomcat-9.0.0.M13/bin/bootstrap.jar:/opt/apache-tomcat-9.0.0.M13/bin/tomcat-juli.jar
+Tomcat started.
