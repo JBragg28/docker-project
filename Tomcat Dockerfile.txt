@@ -8,7 +8,7 @@ RUN apt-get install -y default-jdk
 
 WORKDIR /opt/
 
-RUN wget http://mirror.vorboss.net/apache/tomcat/tomcat-9/v9.0.0.M13/bin/apache-tomcat-9.0.0.M13.ta$
+RUN wget http://www.mirrorservice.org/sites/ftp.apache.org/tomcat/tomcat-9/v9.0.0.M13/bin/apache-tomcat-9.0.0.M13.tar.gz
 RUN tar zxvf apache-tomcat-9.0.0.M13.tar.gz
 RUN apt-get update
 RUN chmod a+x apache-tomcat-9.0.0.M13
