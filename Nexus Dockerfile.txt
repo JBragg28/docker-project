@@ -15,3 +15,5 @@ RUN apt-get update
 RUN chmod a+x /opt/nexus-3.1.0-04/bin/nexus
 EXPOSE 8081
 ENTRYPOINT /opt/nexus-3.1.0-04/bin/nexus start && bash
+
+then to access webpage do: docker run -ti -p 8081:8081/2 nexustask bash (takes some time to load)

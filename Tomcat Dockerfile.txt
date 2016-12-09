@@ -14,6 +14,9 @@ RUN apt-get update
 RUN chmod a+x apache-tomcat-9.0.0.M13
 ENTRYPOINT /opt/apache-tomcat-9.0.0.M13/bin/startup.sh && bash
 
+
+then to access webpage do: docker run -ti -p 8082:8080 tomcattask bash
+
 ----------------------------------------------------------------------------------------------------------------------
 
 Using CATALINA_BASE:   /opt/apache-tomcat-9.0.0.M13

@@ -22,7 +22,7 @@ EXPOSE 8081
 ENTRYPOINT service jira start && bash
 
 
-
+then to access webpage do: docker run -ti -p 8081:8081 jiratask bash
 
 -----------------------------------------------------------------------------
 put this response varfile in the same container (directory) as the Dockerfile

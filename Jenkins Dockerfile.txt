@@ -12,3 +12,6 @@ RUN apt-get install -y jenkins
 RUN apt-get update
 EXPOSE 8080
 ENTRYPOINT service jenkins start && bash
+
+
+then to access webpage do: docker run -ti -p 8080:8080 jenkinstask bash 
