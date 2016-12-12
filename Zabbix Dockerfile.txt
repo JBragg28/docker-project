@@ -15,7 +15,7 @@ echo mysql-server mysql-server/re-root-pass password root | debconf-set-selectio
 #RUN sed -i '/date.timezone =/c\date.timezone = UTC' /etc/php/7.0/apache2/php.ini
 
 #adding apt repository
-RUN wget http://repo.zabbix.com/zabbix/3.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_3.0-1+x$
+RUN wget http://repo.zabbix.com/zabbix/3.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_3.0-1+xenial_all.deb
 RUN dpkg -i zabbix-release_3.0-1+xenial_all.deb
 RUN apt-get update
 
@@ -37,5 +37,4 @@ RUN service mysql start && zcat create.sql.gz |mysql -u root zabbixdb
 RUN sed -i '/DBHost=/c\DBHost=localhost' /etc/zabbix/zabbix_server.conf
 RUN sed -i '/DBName=zabbix/c\DBName=zabbixdb' /etc/zabbix/zabbix_server.conf
 EXPOSE 8083:80
-ENTRYPOINT service apache2 restart && service zabbix-server restart && service zabbix-agent restart$
-
+ENTRYPOINT service apache2 restart && service zabbix-server restart && service zabbix-agent restart && bash
